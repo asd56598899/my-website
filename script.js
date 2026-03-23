@@ -40,6 +40,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, 100);
+
+    // Mobile Hamburger Menu Logic
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            navbar.classList.toggle('menu-open');
+            
+            // Prevent body scrolling when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking any link
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                navbar.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 });
 
 // 動態載入成交相簿照片
