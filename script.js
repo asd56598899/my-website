@@ -225,19 +225,61 @@ document.addEventListener('DOMContentLoaded', () => {
             track.style.transform = `translateX(${baseTranslate() + currentTranslate}px)`;
         };
 
+        const shiftCards = (count, startOffset = 0) => {
+            if (isAnimating || count === 0) return;
+            isAnimating = true;
+            
+            const cardWidth = getCardWidth();
+
+            if (count > 0) {
+                track.style.transition = 'none';
+                for (let i = 0; i < count; i++) {
+                    track.prepend(track.lastElementChild);
+                }
+                const dragVisual = baseTranslate() - (count * cardWidth) + startOffset;
+                track.style.transform = `translateX(${dragVisual}px)`;
+                
+                void track.offsetWidth;
+                
+                track.style.transition = 'transform 0.4s ease-in-out';
+                track.style.transform = `translateX(${baseTranslate()}px)`;
+            } else {
+                const targetTranslate = baseTranslate() + (count * cardWidth);
+                track.style.transition = 'transform 0.4s ease-in-out';
+                track.style.transform = `translateX(${targetTranslate}px)`;
+            }
+            
+            currentTranslate = 0;
+
+            setTimeout(() => {
+                track.style.transition = 'none';
+                if (count < 0) {
+                    for (let i = 0; i < -count; i++) {
+                        track.appendChild(track.firstElementChild);
+                    }
+                    track.style.transform = `translateX(${baseTranslate()}px)`;
+                }
+                
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 50);
+            }, 400);
+        };
+
         const dragEnd = () => {
             if (!isDrag || isAnimating) return;
             isDrag = false;
             track.style.cursor = 'grab';
             
-            if (currentTranslate < -60) {
-                btnNext.click();
-            } else if (currentTranslate > 60) {
-                btnPrev.click();
-            } else {
+            const cardWidth = getCardWidth();
+            const count = Math.round(currentTranslate / cardWidth);
+
+            if (count === 0) {
                 track.style.transition = 'transform 0.4s ease-in-out';
                 track.style.transform = `translateX(${baseTranslate()}px)`;
                 currentTranslate = 0;
+            } else {
+                shiftCards(count, currentTranslate);
             }
         };
 
@@ -252,51 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // === 按鈕點擊邏輯 ===
         btnNext.addEventListener('click', () => {
-            if (isAnimating) return;
-            isAnimating = true;
-            
-            const cardWidth = getCardWidth();
-            const targetTranslate = baseTranslate() - cardWidth;
-            
-            track.style.transition = 'transform 0.4s ease-in-out';
-            track.style.transform = `translateX(${targetTranslate}px)`;
-            
-            currentTranslate = 0;
-
-            setTimeout(() => {
-                track.style.transition = 'none';
-                track.appendChild(track.firstElementChild);
-                track.style.transform = `translateX(${baseTranslate()}px)`;
-                
-                setTimeout(() => {
-                    isAnimating = false;
-                }, 50);
-            }, 400);
+            shiftCards(-1, 0);
         });
 
         btnPrev.addEventListener('click', () => {
-            if (isAnimating) return;
-            isAnimating = true;
-            
-            const cardWidth = getCardWidth();
-            
-            track.prepend(track.lastElementChild);
-            track.style.transition = 'none';
-            
-            // 將 DOM 位移的視覺落差與拖曳位置結合，保持滑動連續不突兀
-            const startTrans = baseTranslate() + currentTranslate - cardWidth;
-            track.style.transform = `translateX(${startTrans}px)`;
-            
-            void track.offsetWidth;
-            
-            track.style.transition = 'transform 0.4s ease-in-out';
-            track.style.transform = `translateX(${baseTranslate()}px)`;
-            
-            currentTranslate = 0;
-
-            setTimeout(() => {
-                isAnimating = false;
-            }, 400);
+            shiftCards(1, 0);
         });
     }
 });
@@ -317,18 +319,31 @@ document.addEventListener('DOMContentLoaded', () => {
         isDown = true;
         isDragging = false;
         slider.style.cursor = 'grabbing';
+        slider.style.scrollSnapType = 'none';
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
     });
 
+    const snapToNearestAlbum = () => {
+        const card = document.querySelector('.album-slide');
+        if (!card) return;
+        const cardWidth = card.offsetWidth + 20;
+        const index = Math.round(slider.scrollLeft / cardWidth);
+        slider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    };
+
     slider.addEventListener('mouseleave', () => {
+        if (!isDown) return;
         isDown = false;
         slider.style.cursor = 'grab';
+        snapToNearestAlbum();
     });
 
     slider.addEventListener('mouseup', () => {
+        if (!isDown) return;
         isDown = false;
         slider.style.cursor = 'grab';
+        snapToNearestAlbum();
     });
 
     slider.addEventListener('mousemove', (e) => {
@@ -396,11 +411,76 @@ document.addEventListener('DOMContentLoaded', () => {
     if (albumCarousel && albumPrevBtn && albumNextBtn) {
         albumPrevBtn.addEventListener('click', () => {
             const slideWidth = document.querySelector('.album-slide').offsetWidth + 20;
-            albumCarousel.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+            const index = Math.round(albumCarousel.scrollLeft / slideWidth);
+            albumCarousel.scrollTo({ left: Math.max(0, (index - 1) * slideWidth), behavior: 'smooth' });
         });
         albumNextBtn.addEventListener('click', () => {
             const slideWidth = document.querySelector('.album-slide').offsetWidth + 20;
-            albumCarousel.scrollBy({ left: slideWidth, behavior: 'smooth' });
+            const index = Math.round(albumCarousel.scrollLeft / slideWidth);
+            albumCarousel.scrollTo({ left: (index + 1) * slideWidth, behavior: 'smooth' });
+        });
+    }
+
+    // Shorts Scroll Logic
+    const shortsCarousel = document.getElementById('shortsCarousel');
+    const shortPrevBtn = document.getElementById('shortPrev');
+    const shortNextBtn = document.getElementById('shortNext');
+    if (shortsCarousel && shortPrevBtn && shortNextBtn) {
+        shortPrevBtn.addEventListener('click', () => {
+            const shortWidth = document.querySelector('.short-card').offsetWidth + 24; // 24px gap
+            const index = Math.round(shortsCarousel.scrollLeft / shortWidth);
+            shortsCarousel.scrollTo({ left: Math.max(0, (index - 1) * shortWidth), behavior: 'smooth' });
+        });
+        shortNextBtn.addEventListener('click', () => {
+            const shortWidth = document.querySelector('.short-card').offsetWidth + 24;
+            const index = Math.round(shortsCarousel.scrollLeft / shortWidth);
+            shortsCarousel.scrollTo({ left: (index + 1) * shortWidth, behavior: 'smooth' });
+        });
+    }
+
+    // Shorts Drag Logic
+    if (shortsCarousel) {
+        let isDownShorts = false;
+        let startXShorts;
+        let scrollLeftShorts;
+
+        shortsCarousel.style.cursor = 'grab';
+
+        shortsCarousel.addEventListener('mousedown', (e) => {
+            isDownShorts = true;
+            shortsCarousel.style.cursor = 'grabbing';
+            shortsCarousel.style.scrollSnapType = 'none';
+            startXShorts = e.pageX - shortsCarousel.offsetLeft;
+            scrollLeftShorts = shortsCarousel.scrollLeft;
+            // Disable iframe pointer events during drag so parent can track the mouse!
+            shortsCarousel.querySelectorAll('iframe').forEach(ifr => ifr.style.pointerEvents = 'none');
+        });
+
+        const snapToNearestShorts = () => {
+            const card = document.querySelector('.short-card');
+            if (!card) return;
+            const cardWidth = card.offsetWidth + 24;
+            const index = Math.round(shortsCarousel.scrollLeft / cardWidth);
+            shortsCarousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+        };
+
+        const endDragShorts = () => {
+            if (!isDownShorts) return;
+            isDownShorts = false;
+            shortsCarousel.style.cursor = 'grab';
+            shortsCarousel.querySelectorAll('iframe').forEach(ifr => ifr.style.pointerEvents = 'auto');
+            snapToNearestShorts();
+        };
+
+        shortsCarousel.addEventListener('mouseleave', endDragShorts);
+        shortsCarousel.addEventListener('mouseup', endDragShorts);
+
+        shortsCarousel.addEventListener('mousemove', (e) => {
+            if (!isDownShorts) return;
+            e.preventDefault();
+            const x = e.pageX - shortsCarousel.offsetLeft;
+            const walk = (x - startXShorts) * 2;
+            shortsCarousel.scrollLeft = scrollLeftShorts - walk;
         });
     }
 
