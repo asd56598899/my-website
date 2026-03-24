@@ -387,6 +387,10 @@ img {
     border-radius: 12px;
     box-shadow: var(--card-shadow);
     transition: var(--transition-slow);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .service-card:hover {
@@ -1207,4 +1211,31 @@ img {
     -webkit-user-drag: none;
     user-select: none;
     -webkit-user-select: none;
+}
+
+/* === Services Mobile 2-Column Grid === */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+    }
+    .service-card {
+        padding: 24px 15px;
+    }
+    .service-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+    }
+    .service-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    .service-title {
+        font-size: 1.05rem;
+        margin-bottom: 6px;
+    }
+    .service-desc {
+        font-size: 0.85rem;
+    }
 }
