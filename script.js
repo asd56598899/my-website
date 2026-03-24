@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const carouselTrack = document.querySelector('.album-track');
+    const carouselTrack = document.querySelector('.album-carousel');
     const gridContainer = document.querySelector('.album-grid');
     
     if (!carouselTrack && !gridContainer) return;
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 成交相簿拖曳功能
 document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.querySelector('.album-track');
+    const slider = document.querySelector('.album-carousel');
     if (!slider) return;
 
     let isDown = false;
@@ -389,4 +389,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // Album Scroll Logic
+    const albumCarousel = document.getElementById('albumCarousel');
+    const albumPrevBtn = document.getElementById('albumPrev');
+    const albumNextBtn = document.getElementById('albumNext');
+    if (albumCarousel && albumPrevBtn && albumNextBtn) {
+        albumPrevBtn.addEventListener('click', () => {
+            const slideWidth = document.querySelector('.album-slide').offsetWidth + 20;
+            albumCarousel.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+        });
+        albumNextBtn.addEventListener('click', () => {
+            const slideWidth = document.querySelector('.album-slide').offsetWidth + 20;
+            albumCarousel.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        });
+    }
+
 });

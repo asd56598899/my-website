@@ -459,8 +459,8 @@ img {
     stroke: #fff;
 }
 
-.model-prev { left: 0; }
-.model-next { right: 0; }
+.model-prev, .album-prev { left: 0; }
+.model-next, .album-next { right: 0; }
 
 .models-slider-wrapper {
     overflow: hidden;
@@ -554,6 +554,13 @@ img {
 }
 
 /* === Transaction Album Section === */
+/* === Happy Customers (Album) Section === */
+.album-slider-container {
+    padding: 0 50px;
+    position: relative;
+    width: 100%;
+}
+
 .album-carousel {
     display: flex;
     overflow-x: auto;
@@ -562,18 +569,14 @@ img {
     scrollbar-width: thin;
 }
 
-.album-track {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 20px;
+.album-carousel {
     scrollbar-width: thin;
     scrollbar-color: var(--secondary) var(--bg-grey);
     user-select: none;
     -webkit-user-select: none;
 }
 
-.album-track img {
+.album-carousel img {
     -webkit-user-drag: none;
 }
 
@@ -627,6 +630,13 @@ img {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE/Edge */
     margin: 0 -20px; /* Bleed out sides on smaller screens */
+    transition: all 0.5s ease;
+}
+
+.shorts-container.expanded {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
 }
 
 .shorts-container::-webkit-scrollbar {
@@ -838,6 +848,18 @@ img {
 
 .verify-group-modern input {
     flex: 1;
+}
+
+/* === Videos Grid Page === */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.videos-grid .short-card {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .btn-get-code {
@@ -1093,7 +1115,7 @@ img {
         height: 250px;
     }
     .model-h-card { min-width: 100%; flex: 0 0 100%; }
-    .models-slider-container { padding: 0 30px; }
+    .models-slider-container, .album-slider-container { padding: 0 30px; }
     
     /* 預約區塊 RWD */
     .reservation-split-layout { grid-template-columns: 1fr; border-radius: 16px; }
