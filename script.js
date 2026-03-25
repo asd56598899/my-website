@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
             const walk = currentX - startX;
             if (Math.abs(walk) > 5) {
-                e.preventDefault();
+                if (e.cancelable) e.preventDefault();
                 track.classList.add('dragging-now');
             }
             
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         track.addEventListener('mouseup', dragEnd);
         track.addEventListener('mouseleave', dragEnd);
         
-        track.addEventListener('touchstart', dragStart, {passive: true});
+        track.addEventListener('touchstart', dragStart, {passive: false});
         track.addEventListener('touchmove', dragMove, {passive: false});
         track.addEventListener('touchend', dragEnd);
 
