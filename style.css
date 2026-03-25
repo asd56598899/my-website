@@ -1166,7 +1166,8 @@ img {
         text-align: center;
     }
     .about-text .section-title {
-        align-items: center;
+        align-items: center !important;
+        width: 100%;
     }
     .about-cta {
         justify-content: center !important;
