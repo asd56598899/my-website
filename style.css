@@ -1155,6 +1155,22 @@ img {
         font-size: 1.1rem;
     }
 
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    /* About Me Centering */
+    .about-text {
+        text-align: center;
+    }
+    .about-text .section-title {
+        align-items: center;
+    }
+    .about-cta {
+        justify-content: center !important;
+    }
     .footer-bottom {
         flex-direction: column;
         gap: 10px;

@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 track.classList.remove('dragging-now');
-            }, 50);
+            }, 300);
         };
 
         track.addEventListener('mousedown', dragStart);
