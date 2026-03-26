@@ -183,12 +183,145 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNext = document.querySelector('.model-next');
 
     if (track && btnPrev && btnNext) {
+        let isAnimating = false;
+        let isDrag = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        
+        // --- 無縫輪迴準備 ---
+        const originalCards = Array.from(track.children);
+        originalCards.forEach(c => {
+            const clone = c.cloneNode(true);
+            clone.addEventListener('click', (e) => {
+                const tr = clone.closest('.models-horizontal');
+                if(tr && tr.classList.contains('dragging-now')) {
+                    e.preventDefault();
+                    return;
+                }
+                if(typeof openModalForModel === 'function') {
+                    openModalForModel(clone.getAttribute('data-model'));
+                }
+            });
+            track.appendChild(clone);
+        });
+        
+        track.prepend(track.lastElementChild);
+        
+        const getCardWidth = () => {
+            const card = track.firstElementChild;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+            return card.getBoundingClientRect().width + gap;
+        };
+
+        const baseTranslate = () => -getCardWidth();
+
+        const resetTransform = () => {
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${baseTranslate()}px)`;
+        };
+
+        setTimeout(resetTransform, 50);
+        window.addEventListener('resize', resetTransform);
+        track.style.cursor = 'grab';
+
+        const dragStart = (e) => {
+            if (isAnimating) return;
+            isDrag = true;
+            track.style.cursor = 'grabbing';
+            track.style.transition = 'none';
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        };
+
+        const dragMove = (e) => {
+            if (!isDrag || isAnimating) return;
+            const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            const walk = currentX - startX;
+            if (Math.abs(walk) > 5) {
+                if (e.cancelable) e.preventDefault();
+                track.classList.add('dragging-now');
+            }
+            
+            currentTranslate = walk;
+            track.style.transform = `translateX(${baseTranslate() + currentTranslate}px)`;
+        };
+
+        const shiftCards = (count, startOffset = 0) => {
+            if (isAnimating || count === 0) return;
+            isAnimating = true;
+            
+            const cardWidth = getCardWidth();
+
+            if (count > 0) {
+                track.style.transition = 'none';
+                for (let i = 0; i < count; i++) {
+                    track.prepend(track.lastElementChild);
+                }
+                const dragVisual = baseTranslate() - (count * cardWidth) + startOffset;
+                track.style.transform = `translateX(${dragVisual}px)`;
+                
+                void track.offsetWidth;
+                
+                track.style.transition = 'transform 0.4s ease-in-out';
+                track.style.transform = `translateX(${baseTranslate()}px)`;
+            } else {
+                const targetTranslate = baseTranslate() + (count * cardWidth);
+                track.style.transition = 'transform 0.4s ease-in-out';
+                track.style.transform = `translateX(${targetTranslate}px)`;
+            }
+            
+            currentTranslate = 0;
+
+            setTimeout(() => {
+                track.style.transition = 'none';
+                if (count < 0) {
+                    for (let i = 0; i < -count; i++) {
+                        track.appendChild(track.firstElementChild);
+                    }
+                    track.style.transform = `translateX(${baseTranslate()}px)`;
+                }
+                
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 50);
+            }, 400);
+        };
+
+        const dragEnd = () => {
+            if (!isDrag || isAnimating) return;
+            isDrag = false;
+            track.style.cursor = 'grab';
+            
+            const cardWidth = getCardWidth();
+            const count = Math.round(currentTranslate / cardWidth);
+
+            if (count === 0) {
+                track.style.transition = 'transform 0.4s ease-in-out';
+                track.style.transform = `translateX(${baseTranslate()}px)`;
+                currentTranslate = 0;
+            } else {
+                shiftCards(count, currentTranslate);
+            }
+            
+            setTimeout(() => {
+                track.classList.remove('dragging-now');
+            }, 300);
+        };
+
+        track.addEventListener('mousedown', dragStart);
+        track.addEventListener('mousemove', dragMove);
+        track.addEventListener('mouseup', dragEnd);
+        track.addEventListener('mouseleave', dragEnd);
+        
+        track.addEventListener('touchstart', dragStart, {passive: false});
+        track.addEventListener('touchmove', dragMove, {passive: false});
+        track.addEventListener('touchend', dragEnd);
+
         btnNext.addEventListener('click', () => {
-            track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+            shiftCards(-1, 0);
         });
 
         btnPrev.addEventListener('click', () => {
-            track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+            shiftCards(1, 0);
         });
     }
 });

@@ -463,7 +463,6 @@ img {
 .slider-btn:active {
     background: var(--accent);
     border-color: var(--accent);
-    transform: scale(0.95);
 }
 .slider-btn:active svg {
     stroke: #fff;
@@ -480,20 +479,13 @@ img {
 .models-horizontal {
     display: flex;
     align-items: stretch;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none; /* IE/Edge */
-    scrollbar-width: none; /* Firefox */
-}
-.models-horizontal::-webkit-scrollbar {
-    display: none;
+    transition: transform 0.4s ease-in-out;
+    touch-action: pan-y;
 }
 
 .model-h-card {
     min-width: 33.333%;
     flex: 0 0 33.333%;
-    scroll-snap-align: start;
     padding: 0 15px;
     display: flex;
     flex-direction: column;
