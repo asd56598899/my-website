@@ -419,11 +419,116 @@ img {
 .service-title {
     font-size: 1.3rem;
     margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .service-desc {
     color: var(--secondary);
     font-size: 0.95rem;
+}
+
+/* === Service Workflow (Creative Version) === */
+.workflow-creative {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    position: relative;
+    margin-top: 80px;
+    padding: 40px 0;
+}
+
+.workflow-wavy-line {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.creative-step {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.step-bg-num {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Outfit', sans-serif;
+    font-size: 7rem; /* Slightly smaller for a tighter feel */
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.05); /* Clean, low-opacity solid color */
+    -webkit-text-stroke: 0; 
+    z-index: -1;
+    transition: 0.4s ease;
+    pointer-events: none;
+    letter-spacing: -2px;
+}
+
+.creative-step:hover .step-bg-num {
+    color: rgba(227, 25, 55, 0.06);
+    transform: translateX(-50%) translateY(-5px) scale(1.05);
+}
+
+.creative-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.creative-step:hover .creative-icon {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.creative-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.creative-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--secondary);
+}
+
+.creative-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #666;
+    padding: 0 10px;
+}
+
+/* Creative Responsive */
+@media (max-width: 991px) {
+    .workflow-creative {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    .creative-step {
+        flex: 0 0 calc(50% - 20px);
+    }
+    .workflow-wavy-line { display: none; }
+    .step-bg-num { font-size: 6rem; top: -30px; }
+}
+
+@media (max-width: 576px) {
+    .creative-step {
+        flex: 0 0 100%;
+    }
 }
 
 /* === Models Slider Layout === */
@@ -492,6 +597,7 @@ img {
     align-items: center;
     text-align: center;
     padding-bottom: 20px;
+    transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
 }
 
 .model-h-img {
@@ -519,6 +625,22 @@ img {
     font-size: 1.5rem;
     margin-bottom: 8px;
     font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+@media (hover: hover) {
+    .models-horizontal:has(.model-h-card:hover) .model-h-card:not(:hover) {
+        opacity: 0.35;
+        filter: grayscale(80%);
+    }
+    
+    .model-h-card:hover .model-h-name {
+        color: var(--primary);
+    }
+    
+    .model-h-card:hover {
+        transform: translateY(-8px);
+    }
 }
 
 .model-h-price {
@@ -1575,6 +1697,459 @@ img {
     stroke: var(--accent);
     flex-shrink: 0;
     margin-top: 2px;
+}
+
+/* === FAQ Section === */.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.faq-question {
+    padding: 24px 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary);
+    transition: 0.3s;
+}
+
+.faq-question:hover {
+    background: #fafafa;
+}
+
+.faq-toggle-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.faq-toggle-icon::before, .faq-toggle-icon::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.faq-toggle-icon::before {
+    width: 2px; height: 14px;
+    left: 11px; top: 5px;
+}
+
+.faq-toggle-icon::after {
+    width: 14px; height: 2px;
+    left: 5px; top: 11px;
+}
+
+.faq-item.active .faq-toggle-icon::before {
+    transform: rotate(90deg);
+}
+
+.faq-item.active .faq-toggle-icon::after {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 30px;
+    background: #fafafa;
+    border-top: 1px solid transparent;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 24px 30px;
+    border-top-color: var(--border-color);
+}
+
+.faq-answer p {
+    color: var(--secondary);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* === Sticky Contact === */
+/* === Floating Side Widgets Group === */
+.floating-widgets-group {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.floating-widgets-group > * {
+    pointer-events: auto;
+}
+
+.sticky-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0; /* Changed to 0. Controlled by dynamic margin */
+}
+
+.sticky-main {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+.sticky-main svg {
+    width: 28px;
+    height: 28px;
+}
+
+.pulse-ring {
+    position: absolute;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0.6;
+    animation: sticky-pulse 2s infinite;
+    z-index: -1;
+}
+
+@keyframes sticky-pulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+.sticky-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.9);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 0;
+    margin-bottom: 0;
+}
+
+.sticky-contact.active .sticky-buttons {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    max-height: 150px;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.sticky-btn {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.sticky-btn:hover {
+    transform: scale(1.1);
+}
+
+.line-btn { background: #06c755; color: #fff; }
+.phone-btn { background: var(--accent); color: #fff; }
+
+.sticky-btn svg { width: 24px; height: 24px; }
+
+/* === RWD for New Sections === */
+@media (max-width: 1024px) {
+    .workflow-stepper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .workflow-stepper::before {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .workflow-stepper {
+        grid-template-columns: 1fr;
+    }
+    .sticky-contact {
+        right: 20px;
+        bottom: 20px;
+    }
+    .faq-question {
+        padding: 20px;
+        font-size: 1.05rem;
+    }
+}
+
+/* === Loan Calculator === */
+.sticky-calc {
+    width: 64px;
+    height: 64px;
+    background: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #fff;
+    animation: float-widget 3s ease-in-out infinite;
+}
+
+@keyframes float-widget {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Offset animation for contact to create more variety without opposing direction */
+.sticky-main {
+    animation: float-widget 3s ease-in-out infinite 0.2s;
+}
+
+.sticky-calc:hover {
+    transform: scale(1.1);
+    background: var(--primary);
+}
+
+.sticky-calc svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 2px;
+}
+
+.calc-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.loan-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.loan-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loan-modal-container {
+    background: #fff;
+    width: 95%;
+    max-width: 550px;
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    transform: translateY(30px);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.loan-modal-overlay.active .loan-modal-container {
+    transform: translateY(0);
+}
+
+.loan-modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: #f5f5f5;
+    border: none;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.loan-modal-close:hover {
+    background: #eee;
+    color: var(--primary);
+}
+
+.loan-modal-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.loan-modal-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.loan-modal-header h3 span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+.loan-modal-header p {
+    color: var(--secondary);
+    font-size: 0.95rem;
+}
+
+.loan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.loan-input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.loan-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.loan-input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.loan-input-group input, .loan-input-group select {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.loan-input-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(227, 30, 36, 0.1);
+}
+
+.btn-calculate {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-calculate:hover {
+    background: #c21820;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
+}
+
+.loan-result {
+    margin-top: 30px;
+    display: none; /* Shown after calculation */
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-card {
+    background: var(--bg-grey);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.result-label {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.result-value {
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.result-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+.detail-item span { color: var(--secondary); }
+.detail-item strong { color: var(--primary); font-size: 1.1rem; }
+
+.loan-disclaimer {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .loan-modal-container { padding: 30px 20px; }
+    .loan-input-row { grid-template-columns: 1fr; gap: 15px; }
+    .floating-widgets-group { right: 15px; transform: translateY(-50%) scale(0.9); }
+    .result-value { font-size: 1.8rem; }
+    .result-details { gap: 15px; }
 }
 
 @media (max-width: 768px) {

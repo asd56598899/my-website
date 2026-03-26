@@ -782,4 +782,137 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', (e) => {
         if(e.target === modal) closeModal();
     });
+
+    // --- FAQ Accordion Logic ---
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Optional: Close other items when opening one
+            faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+            
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // --- Sticky Contact Toggle ---
+    const stickyContainer = document.querySelector('.sticky-contact');
+    const stickyMain = document.querySelector('.sticky-main');
+    
+    if (stickyMain && stickyContainer) {
+        stickyMain.addEventListener('click', (e) => {
+            e.stopPropagation();
+            stickyContainer.classList.toggle('active');
+        });
+
+        // Close sticky menu when clicking outside
+        document.addEventListener('click', () => {
+            stickyContainer.classList.remove('active');
+        });
+    }
+
+    // --- Floating Widgets Scroll-Follow Animation ---
+    const widgetsGroup = document.querySelector('.floating-widgets-group');
+    if (widgetsGroup) {
+        let lastScrollY = window.scrollY;
+        let currentY = 0;
+        let targetY = 0;
+
+        const updateAnimation = () => {
+            // Decay targetY back to 0 (spring origin)
+            targetY *= 0.92; // The closer to 1, the longer the float time
+            
+            // Lerp currentY towards targetY for buttery smooth motion
+            currentY += (targetY - currentY) * 0.1; // Spring stiffness
+
+            // Apply transform (only update if displacement is visible to save CPU)
+            if (Math.abs(currentY) > 0.5 || Math.abs(targetY) > 0.5) {
+                // Subtle scale effect when displaced
+                const scale = 1 - Math.min(Math.abs(currentY) / 1000, 0.05);
+                widgetsGroup.style.transform = `translateY(calc(-50% + ${currentY}px)) scale(${scale})`;
+            } else {
+                widgetsGroup.style.transform = `translateY(-50%) scale(1)`;
+            }
+            
+            requestAnimationFrame(updateAnimation);
+        };
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const delta = currentScrollY - lastScrollY;
+            
+            // Apply drag: scroll down (positive delta) -> targetY goes up (negative offset)
+            targetY += delta * -0.5;
+            
+            // Cap the maximum displacement
+            targetY = Math.min(Math.max(targetY, -120), 120);
+            
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        // Start the physics loop
+        requestAnimationFrame(updateAnimation);
+    }
+
+    // --- Loan Calculator Logic ---
+    const loanModal = document.getElementById('loanModal');
+    const openLoanBtn = document.getElementById('openLoanBtn');
+    const closeLoanModal = document.getElementById('closeLoanModal');
+    const btnCalculate = document.getElementById('btnCalculate');
+    const loanResultBody = document.getElementById('loanResult');
+
+    if (openLoanBtn && loanModal) {
+        openLoanBtn.addEventListener('click', () => {
+            loanModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeModalFunc = () => {
+            loanModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (closeLoanModal) closeLoanModal.addEventListener('click', closeModalFunc);
+        loanModal.addEventListener('click', (e) => {
+            if (e.target === loanModal) closeModalFunc();
+        });
+    }
+
+    if (btnCalculate) {
+        btnCalculate.addEventListener('click', () => {
+            const priceVal = parseFloat(document.getElementById('loanPrice').value);
+            const downVal = parseFloat(document.getElementById('loanDownPayment').value);
+            const months = parseInt(document.getElementById('loanMonths').value);
+            const annualRate = parseFloat(document.getElementById('loanRate').value);
+
+            const principal = (priceVal - downVal) * 10000;
+            
+            if (principal <= 0) {
+                alert('頭期款不能大於或等於車價喔！');
+                return;
+            }
+
+            const monthlyRate = annualRate / 12 / 100;
+            let monthlyPayment;
+
+            if (monthlyRate === 0) {
+                monthlyPayment = principal / months;
+            } else {
+                monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+            }
+
+            const totalRepayment = monthlyPayment * months;
+            const totalInterest = totalRepayment - principal;
+
+            document.getElementById('monthlyPayment').innerText = Math.round(monthlyPayment).toLocaleString();
+            document.getElementById('totalLoanAmount').innerText = (principal / 10000).toFixed(1) + ' 萬';
+            document.getElementById('totalInterest').innerText = Math.round(totalInterest).toLocaleString() + ' 元';
+
+            if (loanResultBody) loanResultBody.style.display = 'block';
+        });
+    }
 });
