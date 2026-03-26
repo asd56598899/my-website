@@ -830,12 +830,15 @@ document.addEventListener('DOMContentLoaded', () => {
             currentY += (targetY - currentY) * 0.1; // Spring stiffness
 
             // Apply transform (only update if displacement is visible to save CPU)
+            const isMobile = window.innerWidth <= 600;
+            const baseTranslate = isMobile ? '0px' : '-50%';
+
             if (Math.abs(currentY) > 0.5 || Math.abs(targetY) > 0.5) {
                 // Subtle scale effect when displaced
                 const scale = 1 - Math.min(Math.abs(currentY) / 1000, 0.05);
-                widgetsGroup.style.transform = `translateY(calc(-50% + ${currentY}px)) scale(${scale})`;
+                widgetsGroup.style.transform = `translateY(calc(${baseTranslate} + ${currentY}px)) scale(${scale})`;
             } else {
-                widgetsGroup.style.transform = `translateY(-50%) scale(1)`;
+                widgetsGroup.style.transform = `translateY(${baseTranslate}) scale(1)`;
             }
             
             requestAnimationFrame(updateAnimation);

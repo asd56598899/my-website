@@ -2147,7 +2147,13 @@ img {
 @media (max-width: 600px) {
     .loan-modal-container { padding: 30px 20px; }
     .loan-input-row { grid-template-columns: 1fr; gap: 15px; }
-    .floating-widgets-group { right: 15px; transform: translateY(-50%) scale(0.9); }
+    .floating-widgets-group { 
+        right: 20px; 
+        top: auto; 
+        bottom: 20px; 
+        transform: none; /* Let JS handle transform carefully */
+        scale: 0.9;
+    }
     .result-value { font-size: 1.8rem; }
     .result-details { gap: 15px; }
 }
