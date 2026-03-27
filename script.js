@@ -78,6 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Hero Reservation Button Extension Logic
+    const reserveGroup = document.getElementById('reserve-group');
+    const mainReserveBtn = document.getElementById('main-reserve-btn');
+    const modelsBtn = document.getElementById('models-btn');
+
+    if (mainReserveBtn && reserveGroup) {
+        mainReserveBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            reserveGroup.classList.toggle('expanded');
+        });
+
+        // Close extension when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!reserveGroup.contains(e.target)) {
+                reserveGroup.classList.remove('expanded');
+            }
+        });
+    }
 });
 
 // 動態載入成交相簿照片

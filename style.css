@@ -1,4 +1,4 @@
-/* === CSS Variables: Toyota Clean Theme === */
+﻿/* === CSS Variables: Toyota Clean Theme === */
 :root {
     --primary: #1a1a1a;
     --secondary: #666666;
@@ -298,9 +298,14 @@ img {
 }
 
 .hero-content {
-    padding: 0 10%;
-    max-width: 800px;
+    padding: 0 12%;
+    max-width: 1200px;
+    width: 100%;
     z-index: 10;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .hero-subtitle {
@@ -311,26 +316,47 @@ img {
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
     margin-bottom: 24px;
     color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: left;
 }
 
 .hero-motto {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     color: #dddddd;
     margin-bottom: 40px;
     font-weight: 400;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-align: left;
+    line-height: 1.8;
 }
 
 .hero-cta {
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
     gap: 16px;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .scroll-indicator {
@@ -941,6 +967,7 @@ img {
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
     margin-bottom: 40px;
+    word-break: keep-all;
 }
 
 .info-features {
@@ -1262,8 +1289,14 @@ img {
         grid-template-columns: 1fr;
     }
     .hero-title {
-        font-size: 3rem;
-    }
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 24px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: left;
+}
     .hero-bg::after {
         opacity: 0.2;
     }
@@ -1315,14 +1348,15 @@ img {
         color: var(--primary) !important;
     }
     .hero-content {
-        padding: 0 5%;
-    }
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    .hero-motto {
-        font-size: 1.1rem;
-    }
+    padding: 0 12%;
+    max-width: 1200px;
+    width: 100%;
+    z-index: 10;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
     .footer-content {
         flex-direction: column;
@@ -2532,3 +2566,119 @@ img {
         text-align: center;
     }
 }
+
+/* === Hero CTA Extension (Horizontal White) === */
+.hero-cta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.cta-expandable {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.btn-primary, .btn-secondary {
+    font-size: 1rem !important;
+    padding: 0 28px !important;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap !important;
+    flex-shrink: 0;
+}
+
+#main-reserve-btn {
+    z-index: 2;
+    border-radius: 50px;
+}
+
+.cta-extension {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    height: 52px;
+    border-radius: 0 50px 50px 0;
+    margin-left: -26px;
+    padding-left: 30px;
+    width: 0;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    z-index: 1;
+}
+
+.cta-expandable.expanded .cta-extension {
+    width: auto;
+    max-width: 500px;
+    opacity: 1;
+    padding-right: 30px;
+}
+
+.cta-extension a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 15px;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.cta-extension a:hover {
+    color: #eb0a1e !important;
+}
+
+.cta-extension .sep {
+    color: #eeeeee;
+    font-size: 1rem;
+}
+
+#models-btn {
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .hero-cta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+    .cta-expandable.expanded .cta-extension {
+        margin-left: 0;
+        margin-top: -10px;
+        border-radius: 0 0 20px 20px;
+        width: 100%;
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: center;
+    }
+    .cta-extension {
+        height: auto;
+        padding: 15px 0;
+    }
+}
+
+
+
+
+
+
+
+
+

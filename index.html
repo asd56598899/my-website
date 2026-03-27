@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>彭玟瑄 | TOYOTA 銷售顧問 (非官方個人服務分站)</title>
     <meta name="description" content="專業 TOYOTA 銷售顧問 彭玟瑄 - 用專業與真誠，為您找到最適合的 TOYOTA。賞車、試乘、購車規劃、交車服務。">
     <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link rel="stylesheet" href="style.css?v=50">
+    <link rel="stylesheet" href="style.css?v=80">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -47,11 +47,22 @@
         <div class="hero-bg"></div>
         <div class="hero-content reveal">
             <h2 class="hero-subtitle">ALWAYS A BETTER WAY</h2>
-            <h1 class="hero-title">TOYOTA 銷售顧問 彭玟瑄</h1>
-            <p class="hero-motto">「用專業與真誠，為您找到最適合的 TOYOTA。」</p>
+                <h1 class="hero-title">TOYOTA<br>銷售顧問<br>彭玟瑄</h1>
+            <p class="hero-motto">
+                新手買車｜換車諮詢｜貸款試算<br>
+                幫你用最清楚的方式選對一台車<br>
+                <span style="display: inline-block; margin-top: 10px;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#eb0a1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>不亂報價 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#eb0a1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>協助試算 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#eb0a1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>安心選車</span>
+            </p>
             <div class="hero-cta">
-                <a href="#reservation" class="btn-primary">專屬預約</a>
-                <a href="#models" class="btn-secondary">探索車款</a>
+                <div class="cta-expandable" id="reserve-group">
+                    <button class="btn-primary" id="main-reserve-btn">專屬預約</button>
+                    <div class="cta-extension">
+                        <a href="#reservation">填寫預約表單</a>
+                        <span class="sep">|</span>
+                        <a href="https://line.me/ti/p/~k541293" target="_blank">LINE 快速諮詢</a>
+                    </div>
+                </div>
+                <a href="#models" class="btn-secondary" id="models-btn">探索車款</a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -65,7 +76,7 @@
         <div class="container">
             <div class="section-header reveal fade-up">
                 <h3 class="section-title">關於我 <span>About Me</span></h3>
-                <p class="section-subtitle">人 > 車，專業只是標配，真誠才是靈魂</p>
+                <p class="section-subtitle">人比車重要。比起推薦車，我更在意你適不適合</p>
             </div>
 
             <!-- Part 1: Personality / Philosophy -->
@@ -218,7 +229,6 @@
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 10px;">
                         <div style="display: flex; gap: 8px; justify-content: center;">
                             <span class="model-tag hybrid">HYBRID</span>
-                            <span class="model-tag gas">汽油</span>
                         </div>
                     </div>
                 </div>
@@ -396,8 +406,8 @@
                 <div class="reservation-info">
                     <div class="info-content">
                         <span class="info-badge">VIP SERVICE</span>
-                        <h3 class="info-title">專屬購車預約</h3>
-                        <p class="info-desc">留下您的資訊，讓我為您安排無微不至的賞車與試乘體驗。從選車、購車到交車，每一步都將享有最尊榮的服務。</p>
+                        <h3 class="info-title">免費試乘＋購車諮詢</h3>
+                        <p class="info-desc">留下您的資訊，我會為您安排試乘與購車規劃<br>從選車到交車，一步一步陪您完成</p>
                         <ul class="info-features">
                             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 1對1專人詳細解說</li>
                             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 優先安排試乘熱銷車款</li>
@@ -486,7 +496,7 @@
                         </div>
 
                         <!-- FormSubmit Hidden Settings -->
-                        <input type="hidden" name="_subject" value="【Toyota 購車諮詢預約】有一筆新的預約資料！">
+                        <input type="hidden" name="_subject" value="【Toyota 免費試乘＋購車諮詢預約】有一筆新的預約資料！">
                         <input type="hidden" name="_next" value="https://asd56598899.github.io/my-website/success.html">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
@@ -681,3 +691,15 @@
     <script src="script.js?v=50"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
