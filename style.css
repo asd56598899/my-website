@@ -2142,6 +2142,7 @@ img {
 }
 
 .loan-input-group input, .loan-input-group select {
+    width: 100%;
     padding: 12px 16px;
     border: 1px solid var(--border-color);
     border-radius: 12px;
