@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預約成功 | 彭玟瑄 TOYOTA 銷售顧問</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Outfit:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #eb0a1e;
+            --bg: #f8f9fa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .success-card {
+            background: #fff;
+            padding: 60px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            max-width: 500px;
+            width: 100%;
+        }
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(235, 10, 30, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+        .icon-box svg { width: 44px; height: 44px; }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .countdown {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        .btn-home {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-home:hover {
+            transform: translateY(-2px);
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h1>預約確認已送出！</h1>
+        <p>我們會盡快與您聯繫。網頁將在 <span class="countdown" id="timer">5</span> 秒後自動返回首頁。</p>
+        <a href="index.html" class="btn-home">立即返回首頁</a>
+    </div>
+
+    <script>
+        let count = 5;
+        const timerElement = document.getElementById('timer');
+        const countdown = setInterval(() => {
+            count--;
+            timerElement.textContent = count;
+            if (count <= 0) {
+                clearInterval(countdown);
+                window.location.href = 'index.html';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
