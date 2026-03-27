@@ -2423,7 +2423,11 @@ img {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0; width: 0;
+    height: 22px; 
+    width: 22px;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 
 .checkmark {

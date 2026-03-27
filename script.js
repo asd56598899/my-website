@@ -414,14 +414,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // 這樣可以避免本地測試 (file://) 遇到的 CORS 問題
         // 也能確保第一次送出必定觸發 FormSubmit 的認證引導頁面
         reservationForm.addEventListener('submit', (e) => {
-            // 驗證個資同意勾選
-            const privacyAgreed = document.getElementById('privacyAgreed');
-            if (privacyAgreed && !privacyAgreed.checked) {
-                e.preventDefault();
-                alert('請先閱讀並勾選「我已閱讀並同意 隱私權政策」以進行預約，感謝您的配合。');
-                return;
-            }
-
             const submitBtn = reservationForm.querySelector('.submit-btn');
             if (submitBtn) {
                 // 送出後改變按鈕狀態，避免重複點擊
