@@ -971,7 +971,8 @@ img {
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
     margin-bottom: 40px;
-    word-break: keep-all;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 .info-features {
@@ -1396,6 +1397,13 @@ img {
     .reservation-info { padding: 40px 30px; }
     .reservation-info::after { display: none; }
     .info-title { font-size: 1.8rem; }
+    .info-desc { 
+        font-size: 0.95rem; 
+        margin-bottom: 30px; 
+        word-break: normal;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
     .reservation-form-container { padding: 40px 30px; }
     .form-grid { grid-template-columns: 1fr; gap: 16px; }
 }
