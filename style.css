@@ -3379,3 +3379,12 @@ img {
     transform: translateX(0);
 }
 
+
+/* Car Model Price Styling */
+.model-h-price {
+    font-size: 1.15rem;
+    color: #777; /* Specific clean grey from reference */
+    font-weight: 400;
+    margin: 8px 0;
+    letter-spacing: 0.5px;
+}

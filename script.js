@@ -665,7 +665,7 @@ const carSpecsData = {
     },
     yaris_cross: {
         name: 'Yaris Cross',
-        officialUrl: 'https://www.toyota.com.tw/showroom/YARIS_CROSS/',
+        officialUrl: 'https://www.toyota.com.tw/showroom/YARISCROSS/',
         trims: [
             {
                 name: '享樂版汽油', price: '69.5萬',
