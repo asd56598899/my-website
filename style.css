@@ -3306,3 +3306,76 @@ img {
     display: block;
     margin-top: 10px;
 }
+
+/* Contact Link Items in Reservation Section */
+.reservation-contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-link-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.contact-link-item .icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-link-item:hover .icon-box {
+    background: var(--accent);
+    color: #fff;
+}
+
+.contact-link-item .contact-text {
+    flex-grow: 1;
+}
+
+.contact-link-item .contact-label {
+    display: block;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.contact-link-item .contact-sub {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 2px;
+}
+
+.contact-link-item .arrow-icon {
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateX(-10px);
+}
+
+.contact-link-item:hover .arrow-icon {
+    opacity: 0.5;
+    transform: translateX(0);
+}
+
