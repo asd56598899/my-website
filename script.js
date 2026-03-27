@@ -79,23 +79,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hero Reservation Button Extension Logic
-    const reserveGroup = document.getElementById('reserve-group');
+    // Hero Reservation Modal Logic
     const mainReserveBtn = document.getElementById('main-reserve-btn');
-    const modelsBtn = document.getElementById('models-btn');
+    const reserveModal = document.getElementById('reserveModal');
+    const closeReserveBtn = document.getElementById('closeReserveModal');
+    const reserveToFormLink = document.getElementById('reserve-to-form');
 
-    if (mainReserveBtn && reserveGroup) {
-        mainReserveBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            reserveGroup.classList.toggle('expanded');
+    if (mainReserveBtn && reserveModal) {
+        mainReserveBtn.addEventListener('click', () => {
+            reserveModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
 
-        // Close extension when clicking elsewhere
-        document.addEventListener('click', (e) => {
-            if (!reserveGroup.contains(e.target)) {
-                reserveGroup.classList.remove('expanded');
+        const closeReserve = () => {
+            reserveModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (closeReserveBtn) {
+            closeReserveBtn.addEventListener('click', closeReserve);
+        }
+
+        reserveModal.addEventListener('click', (e) => {
+            if (e.target === reserveModal) {
+                closeReserve();
             }
         });
+
+        // Close modal and scroll when selecting form option
+        if (reserveToFormLink) {
+            reserveToFormLink.addEventListener('click', (e) => {
+                closeReserve();
+                // Smooth scroll is handled by CSS/HTML defaults usually, 
+                // but let's ensure it works with the modal close state.
+                setTimeout(() => {
+                    const target = document.querySelector('#reservation');
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            });
+        }
     }
 });
 
