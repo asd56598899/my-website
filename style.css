@@ -971,8 +971,7 @@ img {
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
     margin-bottom: 40px;
-    word-break: normal;
-    overflow-wrap: break-word;
+    word-break: keep-all;
 }
 
 .info-features {
@@ -1394,15 +1393,16 @@ img {
     
     /* 預約區塊 RWD */
     .reservation-split-layout { grid-template-columns: 1fr; border-radius: 16px; }
-    .reservation-info { padding: 40px 30px; }
+    .reservation-info { padding: 40px 20px !important; }
     .reservation-info::after { display: none; }
     .info-title { font-size: 1.8rem; }
     .info-desc { 
-        font-size: 0.95rem; 
+        font-size: 0.95rem !important; 
         margin-bottom: 30px; 
-        word-break: normal;
-        overflow-wrap: break-word;
-        white-space: normal;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        display: block !important;
     }
     .reservation-form-container { padding: 40px 30px; }
     .form-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -2325,8 +2325,8 @@ img {
 
 .personality-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 80px;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 90px;
     align-items: center;
 }
 
@@ -2340,9 +2340,11 @@ img {
 }
 
 .personality-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 25px;
-    line-height: 1.2;
+    line-height: 1.15;
+    color: var(--primary);
+    letter-spacing: -0.5px;
 }
 
 .personality-motto {
