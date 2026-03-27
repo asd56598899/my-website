@@ -3266,3 +3266,9 @@ img {
         line-height: normal;
     }
 }
+@media (max-width: 992px) {
+    .personality-title {
+        font-size: 2.2rem !important;
+        text-align: center !important;
+    }
+}
