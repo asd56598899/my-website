@@ -1623,19 +1623,68 @@ img {
     line-height: 1;
 }
 
-.btn-compare-mock {
-    padding: 10px 24px;
+/* Modal Price Actions */
+.modal-price-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.modal-price-actions .btn-modal {
+    padding: 10px 20px;
     border-radius: 50px;
-    border: 1px solid var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+}
+
+.modal-price-actions .btn-modal-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+}
+
+.modal-price-actions .btn-modal-primary:hover {
+    background: #c00;
+    border-color: #c00;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(227, 30, 36, 0.2);
+}
+
+.modal-price-actions .btn-modal-outline {
     background: transparent;
     color: var(--primary);
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
+    border: 1px solid var(--primary);
 }
-.btn-compare-mock:hover {
+
+.modal-price-actions .btn-modal-outline:hover {
     background: var(--primary);
     color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .trim-price-display {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .modal-price-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .modal-price-actions .btn-modal {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 .specs-grid {
@@ -2166,5 +2215,284 @@ img {
     .specs-body { padding: 24px; }
     .trim-price-display { flex-direction: column; align-items: flex-start; gap: 16px; }
     .specs-grid { grid-template-columns: 1fr; }
-    .features-list ul { grid-template-columns: 1fr; }
+}
+
+/* === Sales Personality Section === */
+/* === Integrated Experience Section === */
+.experience {
+    background: #fff;
+}
+
+.workflow-header-simple {
+    position: relative;
+    z-index: 1;
+}
+
+.personality {
+    background: #fff;
+    padding: 100px 0;
+}
+
+.personality-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.personality-badge {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.personality-title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.personality-motto {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    font-style: italic;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--accent);
+    padding-left: 20px;
+}
+
+.personality-specs {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.p-spec-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-spec-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.p-spec-label {
+    font-size: 0.95rem;
+    color: var(--secondary);
+}
+
+.primary-highlight .p-spec-num {
+    color: var(--accent);
+}
+
+.personality-text {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.personality-qr {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.qr-box {
+    width: 100px;
+    height: 100px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+}
+
+.qr-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #999;
+    font-size: 0.7rem;
+}
+
+.qr-placeholder svg { width: 30px; height: 30px; margin-bottom: 5px; }
+
+.qr-hint {
+    font-size: 0.95rem;
+    color: var(--secondary);
+}
+
+.personality-image .p-image-wrapper {
+    position: relative;
+}
+
+.personality-image img {
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.p-image-deco {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background: var(--bg-grey);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+@media (max-width: 992px) {
+    .personality-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .personality-image {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+/* === Form Privacy Consent === */
+.form-privacy-consent {
+    margin: 20px 0;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--secondary);
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0; width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0; left: 0;
+    height: 22px; width: 22px;
+    background-color: #eee;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.checkbox-container:hover input ~ .checkmark { background-color: #ccc; }
+.checkbox-container input:checked ~ .checkmark { background-color: var(--accent); }
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after { display: block; }
+
+.checkbox-container .checkmark:after {
+    left: 8px; top: 4px;
+    width: 5px; height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.official-specs-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.official-specs-link:hover {
+    text-decoration: underline;
+    transform: translateX(3px);
+}
+
+/* Footer Layout Styles */
+.footer-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-top: 40px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 60px;
+}
+
+.footer-logo-brand {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--primary);
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+.footer-info-details {
+    flex: 1;
+    max-width: 800px;
+    text-align: left;
+    font-size: 0.72rem;
+    color: #999;
+    line-height: 1.8;
+}
+
+.footer-copyright-main {
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #888;
+}
+
+.footer-disclaimer-top {
+    opacity: 0.8;
+}
+
+.footer-disclaimer-top a {
+    color: #999;
+    text-decoration: underline;
+}
+
+.footer-disclaimer-grid {
+    margin-top: 10px;
+    font-size: 0.68rem;
+    opacity: 0.6;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 15px;
+}
+
+@media (max-width: 768px) {
+    .footer-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+    .footer-info-details {
+        text-align: center;
+    }
+    .footer-disclaimer-grid {
+        justify-content: center;
+    }
 }

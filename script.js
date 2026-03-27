@@ -557,6 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const carSpecsData = {
     rav4: {
         name: 'RAV4',
+        officialUrl: 'https://www.toyota.com.tw/showroom/RAV4/',
         trims: [
             {
                 name: 'HYBRID 豪華', price: '104萬',
@@ -582,6 +583,7 @@ const carSpecsData = {
     },
     corolla_cross: {
         name: 'Corolla Cross',
+        officialUrl: 'https://www.toyota.com.tw/showroom/COROLLA_CROSS/',
         trims: [
             {
                 name: '豪華汽油', price: '80.9萬',
@@ -622,6 +624,7 @@ const carSpecsData = {
     },
     yaris_cross: {
         name: 'Yaris Cross',
+        officialUrl: 'https://www.toyota.com.tw/showroom/YARIS_CROSS/',
         trims: [
             {
                 name: '享樂版汽油', price: '69.5萬',
@@ -651,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalSpecsBody = document.getElementById('modalSpecsBody');
     const modelCards = document.querySelectorAll('.model-h-card[data-model]');
 
-    const renderTrimData = (trim) => {
+    const renderTrimData = (trim, officialUrl) => {
         let featuresHtml = trim.features.map(f => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ${f}</li>`).join('');
         
         modalSpecsBody.innerHTML = `
@@ -660,8 +663,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="trim-label">建議售價</span>
                     <h3 class="trim-price">${trim.price}</h3>
                 </div>
-                <!-- Redirects directly to the reservation block if button clicked -->
-                <button class="btn-compare-mock" onclick="document.getElementById('closeSpecsModal').click(); document.getElementById('reservation').scrollIntoView({behavior: 'smooth'})">預約賞車</button>
+                <!-- Action Buttons on the right -->
+                <div class="modal-price-actions">
+                    <a href="https://line.me/ti/p/~k541293" target="_blank" class="btn-modal btn-modal-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.1 9.5c0-4.1-4.1-7.5-9.1-7.5S2.9 5.4 2.9 9.5c0 3.7 3.3 6.8 7.7 7.4.3 0 .7.2.8.5l.3 1.8c.1.5.3.6.7.4s2.1-1.3 2.9-2.3c3.5-1.1 5.9-4.1 5.9-7.8z"/></svg>
+                        立即 LINE 預約
+                    </a>
+                    <a href="${officialUrl}" target="_blank" class="btn-modal btn-modal-outline">
+                        官方詳細規格
+                    </a>
+                </div>
             </div>
             
             <div class="specs-grid">
@@ -677,8 +688,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${featuresHtml}
                 </ul>
             </div>
-            <div style="margin-top: 24px; font-size: 0.85rem; color: #888; text-align: left; line-height: 1.5;">
-                * 本站呈現之售價及規配僅供參考，實際規格配備及售價請以 TOYOTA 台灣原廠公告及實車為準。
+            
+            <div style="margin-top: 24px; font-size: 0.82rem; color: #999; text-align: left; line-height: 1.6;">
+                * 本網站所載車輛圖片、規格與價格僅供參考，實際內容以官方公告及現場銷售為準。車輛配備、顏色及規格可能因車型、年份或市場調整而有所不同。
             </div>
         `;
     };
@@ -724,11 +736,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.addEventListener('click', () => {
                         document.querySelectorAll('.spec-tab-btn').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
-                        renderTrimData(trimObj);
+                        renderTrimData(trimObj, data.officialUrl);
                     });
                     modalTabs.appendChild(btn);
                 });
-                if(categories[catName].length > 0) renderTrimData(categories[catName][0]);
+                if(categories[catName].length > 0) renderTrimData(categories[catName][0], data.officialUrl);
             };
 
             activeCats.forEach((catName, index) => {
@@ -751,11 +763,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.spec-tab-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    renderTrimData(trim);
+                    renderTrimData(trim, data.officialUrl);
                 });
                 modalTabs.appendChild(btn);
             });
-            if(data.trims.length > 0) renderTrimData(data.trims[0]);
+            if(data.trims.length > 0) renderTrimData(data.trims[0], data.officialUrl);
         }
         
         modal.classList.add('active');
@@ -916,6 +928,33 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('totalInterest').innerText = Math.round(totalInterest).toLocaleString() + ' 元';
 
             if (loanResultBody) loanResultBody.style.display = 'block';
+        });
+    }
+
+    // --- Privacy Modal Logic ---
+    const privacyModal = document.getElementById('privacyModal');
+    const openPrivacyBtn = document.getElementById('openPrivacyBtn');
+    const openPrivacyBtnFooter = document.querySelector('.openPrivacyBtnFooter');
+    const closePrivacyModal = document.getElementById('closePrivacyModal');
+
+    if (privacyModal) {
+        const openPrivacy = (e) => {
+            if (e) e.preventDefault();
+            privacyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closePrivacy = () => {
+            privacyModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (openPrivacyBtn) openPrivacyBtn.addEventListener('click', openPrivacy);
+        if (openPrivacyBtnFooter) openPrivacyBtnFooter.addEventListener('click', openPrivacy);
+        if (closePrivacyModal) closePrivacyModal.addEventListener('click', closePrivacy);
+        
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) closePrivacy();
         });
     }
 });
