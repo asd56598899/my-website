@@ -15,6 +15,7 @@
     
     --transition-fast: 0.3s ease;
     --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --v: 50;
 }
 
 /* === Reset & Base === */
@@ -194,23 +195,59 @@ img {
     align-items: center;
 }
 
-.logo.toyota-logo-container {
+.logo.text-logo-container {
+    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
-.brand-logo-img {
-    height: 38px;
-    width: auto;
+.logo-brand-stack {
+    display: flex;
+    flex-direction: column;
 }
 
-.logo-text {
-    font-family: var(--font-body);
+.logo-brand-main {
+    font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--primary);
+    font-weight: 700;
+    color: #ffffff; /* White at top */
     letter-spacing: 1px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    transition: var(--transition-fast);
+}
+
+.navbar.scrolled .logo-brand-main {
+    color: var(--primary);
+    text-shadow: none;
+}
+
+.brand-red {
+    color: var(--accent);
+    font-size: 1.45rem;
+    font-weight: 800;
+}
+
+.logo-brand-sub {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.8); /* Light at top */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+    transition: var(--transition-fast);
+}
+
+.navbar.scrolled .logo-brand-sub {
+    color: var(--secondary);
+}
+
+@media (max-width: 480px) {
+    .logo-brand-main { font-size: 1.05rem; }
+    .logo-brand-sub { font-size: 0.68rem; }
 }
 
 .nav-links {
@@ -2464,22 +2501,13 @@ img {
     color: #888;
 }
 
-.footer-disclaimer-top {
+.footer-disclaimer-content {
     opacity: 0.8;
 }
 
-.footer-disclaimer-top a {
+.footer-disclaimer-content a {
     color: #999;
     text-decoration: underline;
-}
-
-.footer-disclaimer-grid {
-    margin-top: 10px;
-    font-size: 0.68rem;
-    opacity: 0.6;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 15px;
 }
 
 @media (max-width: 768px) {
@@ -2487,12 +2515,9 @@ img {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 25px;
+        gap: 30px;
     }
     .footer-info-details {
         text-align: center;
-    }
-    .footer-disclaimer-grid {
-        justify-content: center;
     }
 }
