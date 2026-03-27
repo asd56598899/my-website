@@ -3388,3 +3388,12 @@ img {
     margin: 8px 0;
     letter-spacing: 0.5px;
 }
+
+/* Car Model Tagline Styling */
+.model-h-tagline {
+    font-size: 0.95rem;
+    color: #666; /* Neutral grey instead of brand red */
+    font-weight: 500;
+    margin: 4px 0 10px;
+    letter-spacing: 0.5px;
+}
