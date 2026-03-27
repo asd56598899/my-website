@@ -2682,3 +2682,69 @@ img {
 
 
 
+
+
+/* === Final RWD Hero & Reservation Fixes === */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 20px !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+    .hero-cta {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+    .cta-expandable {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+    }
+    .btn-primary, .btn-secondary, #models-btn {
+        width: 100% !important;
+        max-width: 250px !important;
+        margin-left: 0 !important;
+    }
+    .cta-extension {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        width: 0 !important;
+        max-height: 0 !important;
+        opacity: 0 !important;
+        overflow: hidden !important;
+        transition: all 0.4s ease-in-out !important;
+        height: auto !important;
+    }
+    .cta-expandable.expanded .cta-extension {
+        width: 100% !important;
+        max-width: 250px !important;
+        max-height: 200px !important;
+        opacity: 1 !important;
+        margin-top: 10px !important;
+        border-radius: 12px !important;
+        padding: 12px 0 !important;
+        background: #ffffff !important;
+        display: flex !important;
+        justify-content: space-around !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+        display: flex !important;
+    }
+    .cta-extension a {
+        font-size: 0.9rem !important;
+        padding: 5px 10px !important;
+        color: #000000 !important;
+    }
+    .info-title { font-size: 1.6rem !important; }
+    .info-desc { 
+        word-break: normal !important; 
+        overflow-wrap: break-word !important; 
+        white-space: normal !important;
+        line-height: 1.6 !important;
+    }
+}
+
