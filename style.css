@@ -787,10 +787,14 @@ img {
 }
 
 .model-h-name {
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
     margin-bottom: 8px;
     font-weight: 700;
     transition: color 0.3s ease;
+    white-space: nowrap;
+    width: 100%;
+    overflow: visible;
+    text-align: center;
 }
 
 @media (hover: hover) {

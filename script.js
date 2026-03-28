@@ -743,6 +743,69 @@ const carSpecsData = {
             }
         ]
     },
+    corolla_cross_gr_sport: {
+        name: 'Corolla Cross GR SPORT',
+        officialUrl: 'https://www.toyota.com.tw/showroom/COROLLA_CROSS/',
+        trims: [
+            {
+                name: 'GR SPORT 汽油', price: '91.5萬',
+                specs: { displacement: '1,798', hp: '140/6,400', combinedHp: '-', fuel: '14.2' },
+                features: ['輪圈(18吋GR專屬雙色切削鋁圈)', '頭燈(LED Bi-Beam(附手動水平調整))', '尾燈(LED光條式燻黑)', 'EPB電子駐車煞車系統', 'Auto Hold自動定車煞車系統', '前座音響主機(Drive+ Link 9吋 Wi-Fi 觸控式)', 'Apple CarPlay/Android Auto(無線)/(無線)', 'Push Start引擎啟閉系統(附GR字樣)', 'TSS 2.0智動駕駛輔助系統', '儀錶板(雙環式附4.2吋全彩MID)', 'ACC主動式車距維持定速系統(全速域/Stop & Go)', 'PCS預警式防護系統', 'BSM盲點偵測警示系統', 'RCTA後方車側警示系統', 'PVM環景影像輔助系統']
+            },
+            {
+                name: 'HYBRID GR SPORT', price: '98.5萬',
+                specs: { displacement: '1,798', hp: '98/5,200', combinedHp: '122', fuel: '23.1' },
+                features: ['輪圈(18吋GR專屬雙色切削鋁圈)', '頭燈(LED Bi-Beam(附手動水平調整))', '尾燈(LED光條式燻黑)', 'EPB電子駐車煞車系統', 'Auto Hold自動定車煞車系統', '前座音響主機(Drive+ Link 9吋 Wi-Fi 觸控式)', 'Apple CarPlay/Android Auto(無線)/(無線)', 'Push Start引擎啟閉系統(附GR字樣)', 'TSS 2.0智動駕駛輔助系統', '儀錶板(12.3吋全彩數位式)', 'ACC主動式車距維持定速系統(全速域/Stop & Go)', 'PCS預警式防護系統', 'BSM盲點偵測警示系統', 'RCTA後方車側警示系統', 'PVM環景影像輔助系統']
+            },
+            {
+                name: 'HYBRID GR SPORT(選)', price: '103.5萬',
+                specs: { displacement: '1,798', hp: '98/5,200', combinedHp: '122', fuel: '23.1' },
+                features: ['頭燈(LED Bi-Beam(附序列式方向燈與手動水平調整))', '電動尾門', '前座椅電動調整(駕駛座: 八向調整)']
+            }
+        ]
+    },
+    corolla_altis: {
+        name: 'Corolla Altis',
+        officialUrl: 'https://www.toyota.com.tw/showroom/ALTIS/',
+        trims: [
+            {
+                name: '經典', price: '73.5萬',
+                specs: { displacement: '1,798', hp: '140/6,400', combinedHp: '-', fuel: '15.7' },
+                features: ['輪圈(15吋高強度鋼圈)', '頭燈(LED Bi-Beam(附手動水平調整))', '後視鏡(電動收折(附停車收折/倒車連動))', '後座特調整(6/4分離椅背傾倒)', '方向盤型式(三幅式軟質)', '儀錶板(雙環式附4.2吋全彩MID)', '空調系統(手動冷暖)', '後座出風口', '前座音響主機(CD主機)', '音響揚聲器數量(4具)', 'TSS 2.0智動駕駛輔助系統', 'ACC主動式車距維持定速系統(全速域)', 'PCS預警式防護系統', 'LTA車道循跡輔助系統', 'AHB智慧型遠光燈自動切換系統']
+            },
+            {
+                name: '豪華', price: '80.5萬',
+                specs: { displacement: '1,798', hp: '140/6,400', combinedHp: '-', fuel: '15.6' },
+                features: ['+ 輪圈(16吋十幅式鋁圈)', '+ 空調系統(S-FLOW智慧型恆溫)', '+ 前座音響主機(Drive+ Link 9吋Wi-Fi觸控式)', '+ 音響揚聲器數量(6具)', '+ 前霧燈(LED)', '+ 玻璃功能(隔音(前擋風玻璃))', '+ 照明燈(前車門禮儀燈/行李廂)', '+ 電源/USB(前座中央扶手12V/前座Type C)', '+ 主機連結功能(Type C/藍牙)', '+ Apple CarPlay/Android Auto(無線)/(無線)', '+ Smart Entry車門啟閉系統', '+ Push Start引擎啟閉系統', '+ 防盜功能(附晶片防盜功能)', '+ BSM盲點偵測警示系統', '+ RVC倒車影像輔助系統', '+ 倒車輔助雷達(2具)']
+            },
+            {
+                name: 'HYBRID 豪華', price: '86.5萬',
+                specs: { displacement: '1,798', hp: '98/5,200', combinedHp: '122', fuel: '25.3' },
+                features: ['輪圈(16吋十幅式鋁圈)', '頭燈(LED Bi-Beam(HYBRID專屬設計/附手動水平調整))', '後視鏡(電動收折(附停車收折/倒車連動))', '後座椅調整(6/4分離椅背傾倒)', '方向盤型式(三幅式軟質)', '儀錶板(雙環式附4.2吋全彩MID)', '空調系統(S-FLOW智慧型恆溫)', '後座出風口', '前座音響主機(Drive+ Link 9吋Wi-Fi觸控式)', '音響揚聲器數量(6具)', 'TSS 2.0智動駕駛輔助系統', 'ACC主動式車距維持定速系統(全速域)', 'PCS預警式防護系統', 'LTA車道循跡輔助系統', 'AHB智慧型遠光燈自動切換系統']
+            },
+            {
+                name: 'HYBRID 尊爵', price: '89.5萬',
+                specs: { displacement: '1,798', hp: '98/5,200', combinedHp: '122', fuel: '25.3' },
+                features: ['+ 方向盤型式(三幅式真皮)', '+ 儀錶板(12.3吋全彩數位式)', '+ 前霧燈(LED)', '+ 尾燈(LED光條式)', '+ 排檔桿頭材質(真皮)', '+ 電源/USB(前座中央扶手12V及Type C/前座及後座Type C)', '+ 車速連動車門上鎖']
+            }
+        ]
+    },
+    corolla_altis_gr_sport: {
+        name: 'Corolla Altis GR SPORT',
+        officialUrl: 'https://www.toyota.com.tw/showroom/ALTIS/',
+        trims: [
+            {
+                name: 'GR SPORT 汽油', price: '91.5萬',
+                specs: { displacement: '1,987', hp: '170/6,600', combinedHp: '-', fuel: '16.5' },
+                features: ['輪圈(18吋霧黑鋁圈)', '頭燈(LED Bi-Beam(附手動水平調整))', '尾燈(LED光條式燻黑)', '外觀套件(GR SPORT外觀套件)', '前座椅材質/型式(BRIN NAUB®透氣類麂皮與豪華皮質 (前座頭枕GR字樣))', '儀錶板(12.3吋全彩數位式)', '前座音響主機(Drive+ Link 9吋Wi-Fi觸控式 (附GR開機畫面))', 'Smart Entry車門啟閉系統 (鑰匙附GR字樣)', 'Push Start引擎啟閉系統(附GR字樣)', 'TSS 2.0智動駕駛輔助系統', 'ACC主動式車距維持定速系統(全速域)', 'PCS預警式防護系統', 'LTA車道循跡輔助系統', 'BSM盲點偵測警示系統', 'RVC倒車影像輔助系統']
+            },
+            {
+                name: 'HYBRID GR SPORT', price: '91.9萬',
+                specs: { displacement: '1,798', hp: '98/5,200', combinedHp: '122', fuel: '23.5' },
+                features: ['輪圈(18吋霧黑鋁圈)', '頭燈(LED Bi-Beam(HYBRID專屬設計/附手動水平調整))', '尾燈(LED光條式燻黑)', '外觀套件(GR SPORT外觀套件)', '前座椅材質/型式(BRIN NAUB®透氣類麂皮與豪華皮質 (前座頭枕GR字樣))', '儀錶板(12.3吋全彩數位式)', '前座音響主機(Drive+ Link 9吋Wi-Fi觸控式 (附GR開機畫面))', 'Smart Entry車門啟閉系統 (鑰匙附GR字樣)', 'Push Start引擎啟閉系統(附GR字樣)', 'TSS 2.0智動駕駛輔助系統', 'ACC主動式車距維持定速系統(全速域)', 'PCS預警式防護系統', 'LTA車道循跡輔助系統', 'BSM盲點偵測警示系統', 'RVC倒車影像輔助系統']
+            }
+        ]
+    },
     yaris_cross: {
         name: 'Yaris Cross',
         officialUrl: 'https://www.toyota.com.tw/showroom/YARISCROSS/',
@@ -761,6 +824,22 @@ const carSpecsData = {
                 name: '潮玩版汽油', price: '79.5萬',
                 specs: { displacement: '1,496', hp: '106/6,000', combinedHp: '-', fuel: '17.5' },
                 features: ['頭燈(LED Bi-Beam(附手動水平調整/鍍鉻飾條))', '前霧燈(LED)', '後視鏡(電動收折(附停車收折/迎賓燈))', '電動尾門(足踢感應式附遙控功能/防夾功能)', '車頂架', '外觀套件(銀色擾流底板、銀色車側飾條)', '前座椅材質/型式(豪華皮質)', '後座椅材質/型式(豪華皮質)', '方向盤調整(四向手動)', '儀錶板(7吋全彩數位式)', '氣氛燈(前座)', '杯架(前座中央/前座車門/後座中央/後座車門)', '空調系統(智慧型恆溫空調)', 'BSM盲點偵測警示系統', 'RCTA後方車側警示系統']
+            }
+        ]
+    },
+    vios: {
+        name: 'VIOS',
+        officialUrl: 'https://www.toyota.com.tw/showroom/VIOS/',
+        trims: [
+            {
+                name: '經典', price: '60.9萬',
+                specs: { displacement: '1,496', hp: '107/6,000', combinedHp: '-', fuel: '17.3' },
+                features: ['輪圈(14吋高強度鋼圈(附風尚輪圈飾蓋))', '頭燈(反射式鹵素頭燈(附手動水平調整))', '儀錶板(三環式附行車資訊顯示幕)', '電動窗(四門電動窗(附駕駛座One Touch及防夾功能))', '電源/USB(前座12V/前座USB)', '空調系統(手動冷暖)', '前座音響主機(Drive+ Link 7吋觸控式)', '音響揚聲器數量(4具)', '頭尾燈自動啟閉系統', '防盜功能', 'ABS防鎖定煞車系統', 'BAS煞車輔助系統', 'TRC循跡防滑控制系統', 'HAC上坡起步輔助系統', 'TPMS胎壓偵測警示系統']
+            },
+            {
+                name: '豪華', price: '67.5萬',
+                specs: { displacement: '1,496', hp: '107/6,000', combinedHp: '-', fuel: '17.3' },
+                features: ['頭燈(投射式鹵素頭燈(附手動水平調整))', '儀錶板(三環式附4.2吋全彩MID)', '空調系統(智慧型恆溫)', '防盜功能(附晶片防盜功能)', '尾燈(LED光條式)', '玻璃功能(隔音(前擋風玻璃))', '前座椅材質/型式(舒適皮質(黑棕雙色))', '後座椅材質/型式(舒適皮質(黑棕雙色))', '方向盤控制鍵(音響/電話/MID)', '照明燈(前座雙置杯架/行李廂)', 'Smart Entry車門啟閉系統', 'Push Start引擎啟閉系統', '定速巡航系統', '駕駛模式(ECO/NORMAL/SPORT)', 'TSS 系統', 'PCS預警式防護系統(預警式防護警示/煞車力道輔助/碰撞緩解輔助)', 'LDA車道偏離警示系統(車道偏離警示/車輛搖晃警示)']
             }
         ]
     }
