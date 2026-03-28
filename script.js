@@ -680,6 +680,28 @@ const carSpecsData = {
             }
         ]
     },
+    rav4_adventure: {
+        name: 'RAV4 ADVENTURE',
+        officialUrl: 'https://www.toyota.com.tw/showroom/RAV4/',
+        trims: [
+            {
+                name: 'ADVENTURE 4WD', price: '133萬',
+                specs: { displacement: '2,487', hp: '186/6,000', combinedHp: '239', fuel: '20.3' },
+                features: ['TSS 4.0智動駕駛輔助系統', 'TOYOTA Connect 智能聯網系統', '輪圈(18吋六幅式霧黑鋁圈)', '頭燈(LED Bi-Beam頭燈組(附自動水平調整))', '電動尾門(足踢感應式附遙控功能/防夾功能)', '天窗(電動)', '車頂架(越野型橋式)', '外觀套件(ADVENTURE 外觀專屬套件(霧黑水箱罩飾板/霧銀前後下護板/霧黑厚覆式輪拱飾板/駁黑外車門把手/ADVENTURE 專屬銘板))', '前座椅材質/型式(豪華皮質 (Adventure 專屬設計))', '儀錶板(12.3吋全彩數位式)', '前座音響主機(12.9 吋觸控式)', '車內後視鏡(E-Mirror電子式)', 'FCTA前方橫向來車警示系統', 'DMC駕駛疲勞監測系統', 'PVM環景影像輔助系統(附底盤透視)']
+            }
+        ]
+    },
+    rav4_gr_sport: {
+        name: 'RAV4 GR SPORT',
+        officialUrl: 'https://www.toyota.com.tw/showroom/RAV4/',
+        trims: [
+            {
+                name: 'GR SPORT 4WD', price: '139萬',
+                specs: { displacement: '2,487', hp: '186/6,000', combinedHp: '239', fuel: '20.3' },
+                features: ['TSS 4.0智動駕駛輔助系統', 'TOYOTA Connect 智能聯網系統', '輪圈(20吋輕量化雙肋五幅式雙色切削鋁圈)', '頭燈(LED Bi-Beam頭燈組(附自動水平調整))', '電動尾門(足踢感應式附遙控功能/防夾功能)', '天窗(電動)', '車頂架', '外觀套件(GR SPORT外觀專屬套件(蜂巢式駁黑水箱護罩/駁黑前後及車側下護板/駁黑車側後視鏡/GR SPORT 專屬銘板/駁黑空力運動尾翼))', '前座椅材質/型式(BRIN NAUB®透氣類麂皮與豪華皮質 (GR SPORT 專屬設計及頭枕 GR 刺繡字樣))', '前座椅電動調整(駕駛座:八向調整(附電動腰靠) 副駕駛座:八向調整)', '儀錶板(12.3吋全彩數位式)', '前座音響主機(12.9 吋觸控式)', '車內後視鏡(E-Mirror電子式)', 'FCTA前方橫向來車警示系統', 'DMC駕駛疲勞監測系統']
+            }
+        ]
+    },
     corolla_cross: {
         name: 'Corolla Cross',
         officialUrl: 'https://www.toyota.com.tw/showroom/COROLLA_CROSS/',
