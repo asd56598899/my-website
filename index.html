@@ -266,13 +266,16 @@
                 <h3 class="section-title">成交相簿 <span>Happy Customers</span></h3>
             </div>
             
-            <div class="album-slider-container reveal fade-up">
+            <div class="coming-soon-card reveal fade-up">
+                <div class="coming-soon-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                </div>
+                <p class="coming-soon-text">精采交車故事整理中...<br>期待在這裡記錄您的喜悅！</p>
+            </div>
+            
+            <div class="album-slider-container reveal fade-up hidden">
                 <button class="slider-btn album-prev" id="albumPrev" aria-label="Previous"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
                 <div class="album-carousel" id="albumCarousel">
-                    <!-- Placeholder photos representing banners/deliveries -->
-                    <div class="album-slide"><div class="a-placeholder">相片 1</div></div>
-                    <div class="album-slide"><div class="a-placeholder">相片 2</div></div>
-                    <div class="album-slide"><div class="a-placeholder">相片 3</div></div>
                 </div>
                 <button class="slider-btn album-next" id="albumNext" aria-label="Next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
@@ -291,37 +294,16 @@
                 <p class="section-subtitle">生動呈現車輛細節與特色，感受真實魅力</p>
             </div>
             
-            <div class="shorts-slider-container reveal fade-up">
+            <div class="coming-soon-card reveal fade-up">
+                <div class="coming-soon-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2c.46-1.7.46-5.33.46-5.33s0-3.65-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                </div>
+                <p class="coming-soon-text">最新影音內容剪輯中...<br>敬請期待更多實車開箱與短影音！</p>
+            </div>
+
+            <div class="shorts-slider-container reveal fade-up hidden">
                 <button class="slider-btn short-prev" id="shortPrev" aria-label="Previous"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
                 <div class="shorts-container" id="shortsCarousel">
-                    <!-- Short 1 -->
-                    <div class="short-card" data-video-id="3Hr28GWW3Lo">
-                        <div class="short-thumbnail">
-                            <img src="https://img.youtube.com/vi/3Hr28GWW3Lo/hqdefault.jpg" alt="TOYOTA Short">
-                            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                        </div>
-                    </div>
-                    <!-- Short 2 -->
-                    <div class="short-card" data-video-id="3j6iyJk9-Ow">
-                        <div class="short-thumbnail">
-                            <img src="https://img.youtube.com/vi/3j6iyJk9-Ow/hqdefault.jpg" alt="TOYOTA Short">
-                            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                        </div>
-                    </div>
-                    <!-- Short 3 -->
-                    <div class="short-card" data-video-id="HQaKbVEAXKg">
-                        <div class="short-thumbnail">
-                            <img src="https://img.youtube.com/vi/HQaKbVEAXKg/hqdefault.jpg" alt="TOYOTA Short">
-                            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                        </div>
-                    </div>
-                    <!-- Short 4 (顯示可滑動) -->
-                    <div class="short-card" data-video-id="OjW1KNMOTeY">
-                        <div class="short-thumbnail">
-                            <img src="https://img.youtube.com/vi/OjW1KNMOTeY/hqdefault.jpg" alt="TOYOTA Short">
-                            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                        </div>
-                    </div>
                 </div>
                 <button class="slider-btn short-next" id="shortNext" aria-label="Next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
@@ -373,44 +355,64 @@
             </div>
             
             <div class="faq-container reveal fade-up">
-                <!-- FAQ Item 1 -->
+                <!-- FAQ Item 1: 第一次買車 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>第一次買車不知道怎麼選？</span>
+                        <div class="faq-toggle-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>第一次買車其實不用擔心，先了解你的預算、用途與需求，再一步一步陪你看車、比較，幫你找到最適合的選擇。不用急著決定，慢慢選也沒關係。如果你也正在考慮人生第一台車，歡迎隨時找我聊聊。</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2: 等車時間 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>現在訂車大約要等多久？</span>
                         <div class="faq-toggle-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <p>等車時間會依據「車型」與「車色」的受歡迎程度而有所調動，實際情況需依當時的車型配額而定。建議您可以直接聯繫我，我將為您及時查詢各車型的最新配額狀況。</p>
+                        <p>等車時間會依車型與顏色而不同，熱門車型通常需要等待約1～3個月以上。隨時幫你確認最新配額與交車進度，讓你不用一直自己追蹤，也能安心掌握狀況。有需要也可以先幫你查詢目前的最新配額狀況。</p>
                     </div>
                 </div>
-                <!-- FAQ Item 2 -->
+                <!-- FAQ Item 3: 舊車折抵 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>舊車可以協助回收或折抵嗎？</span>
                         <div class="faq-toggle-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <p>完全沒問題！我們提供專業的「舊換新」服務。我可以安排專業評估人員為您的舊車進行殘值鑑定，鑑定後的價格可直接折抵新車款，並協助您處理汰舊換新 5 萬元的政府補助手續。</p>
+                        <p>可以的！直接安排舊車鑑價與折抵評估，也會確認是否符合政府補助資格。相關條件會依政策有所不同，會協助您了解並處理整個流程。您可以傳照片給我，我先幫您初步估算舊車行情。</p>
                     </div>
                 </div>
-                <!-- FAQ Item 3 -->
+                <!-- FAQ Item 4: 貸款 / 分期 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>有提供低頭期款或零利率專案嗎？</span>
                         <div class="faq-toggle-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <p>TOYOTA 每個月都會針對不同車型推出多樣化的財務專案，包含「低頭期款」、「小資分期」等方案，相關優惠內容需依銀行或融資公司審核條件而定。我會根據您的需求，協助您媒合最合適的還款方式。</p>
+                        <p>有的！TOYOTA 提供多元購車方案，包含低頭期、彈性分期等選擇。依照您的預算試算月付，讓您在負擔範圍內安心購車。也可以幫您多做幾種試算組合，找出最不費力的分期方式。</p>
                     </div>
                 </div>
-                <!-- FAQ Item 4 -->
+                <!-- FAQ Item 5: 跨縣市 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>外縣市買車也可以找您服務嗎？</span>
                         <div class="faq-toggle-icon"></div>
                     </div>
                     <div class="faq-answer">
-                        <p>是的！不論您在哪個城市，我都能協助您進行跨區交車（依實際物流情況安排）。我可以安排線上諮詢，或在情況允許下親自前往說明。交車時，也能協助安排專業拖車服務將愛車送到您的所在地。</p>
+                        <p>可以的！不論您在哪個縣市，都能夠彈性安排購車諮詢與流程說明。包含線上溝通、車款介紹，以及安排試乘或交車方式，讓您不用多次往返，也能更輕鬆完成購車。長期處理跨縣市交車，遠端流程都很成熟，請儘管放心。</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 6: 收單句 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>還不確定怎麼選可以先聊嗎？</span>
+                        <div class="faq-toggle-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>當然可以！不用有壓力，也不用馬上決定。可以先加 LINE 或留下資料，先幫你了解需求，再一起慢慢討論最適合的選擇。先把我加進 LINE 好友，有任何車輛相關的問題隨時都能找到我。</p>
                     </div>
                 </div>
             </div>

@@ -214,7 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = imgSrc;
     }
     
-    tryLoadImage();
+    // 暫時停止自動載入相片，待後續補上後再開啟
+    // tryLoadImage();
 });
 
 // 車款無限輪播邏輯
@@ -841,14 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            
-            // Optional: Close other items when opening one
-            faqItems.forEach(otherItem => otherItem.classList.remove('active'));
-            
-            if (!isActive) {
-                item.classList.add('active');
-            }
+            item.classList.toggle('active');
         });
     });
 

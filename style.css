@@ -114,6 +114,46 @@ img {
     display: block;
 }
 
+.hidden {
+    display: none !important;
+}
+
+/* === Coming Soon Placeholder === */
+.coming-soon-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 60px 40px;
+    background: #ffffff;
+    border: 1px dashed #cccccc;
+    border-radius: 16px;
+    text-align: center;
+    color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.coming-soon-icon {
+    width: 64px;
+    height: 64px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.coming-soon-text {
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #666;
+}
+
 /* === Buttons === */
 [class^="btn-"] {
     display: inline-block;
