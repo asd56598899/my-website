@@ -79,6 +79,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Center Scroll Logic ---
+    const scrollToCenter = (targetId) => {
+        const targetElement = document.getElementById(targetId.replace('#', ''));
+        if (!targetElement) return;
+
+        const windowHeight = window.innerHeight;
+        const elementHeight = targetElement.offsetHeight;
+        const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
+
+        let targetY;
+        // If the section is taller than the screen, align it to near-top
+        if (elementHeight > windowHeight * 0.8) {
+            targetY = elementTop - 80; // Small margin for header
+        } else {
+            // Otherwise, perfectly center it
+            targetY = elementTop - (windowHeight / 2) + (elementHeight / 2);
+        }
+
+        window.scrollTo({
+            top: targetY,
+            behavior: 'smooth'
+        });
+    };
+
+    // Intercept clicks on anchor links
+    document.querySelectorAll('a[href^="#"], a[href*="index.html#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            const targetId = href.includes('#') ? href.split('#')[1] : null;
+
+            if (targetId) {
+                // If on the same page (index.html), prevent default and center scroll
+                if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || !href.includes('html')) {
+                    e.preventDefault();
+                    scrollToCenter(targetId);
+                }
+            }
+        });
+    });
+
+    // Handle Hero CTA Buttons explicitly if they aren't standard <a>
+    const modelsBtn = document.getElementById('models-btn');
+    if (modelsBtn) {
+        modelsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToCenter('models');
+        });
+    }
+
+    // Auto-center scroll on page load if hash exists
+    if (window.location.hash) {
+        // Delay slightly for any other visual reveals to settle
+        setTimeout(() => {
+            scrollToCenter(window.location.hash);
+        }, 300);
+    }
+
     // Hero Reservation Modal Logic
     const mainReserveBtn = document.getElementById('main-reserve-btn');
     const reserveModal = document.getElementById('reserveModal');
